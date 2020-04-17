@@ -36,6 +36,7 @@ searchMovies = async () => {
       <View style={styles.container}>
       <TextInput
       style={styles.input}
+      //keyboardType = 'web-search'
       value={this.state.searchstring}
       onChangeText={this.getHandler('searchstring')}
       placeholder="Search"
@@ -50,7 +51,7 @@ searchMovies = async () => {
           data={this.state.data}
           keyExtractor={ (item, index) => index.toString() }
           renderItem={({ item }) =>
-            <FlatListItem item={item}/>}
+            <FlatListItem navigation={this.props.navigation} item={item}/>}
         />
 
       </View>
@@ -64,7 +65,6 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 20,
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
