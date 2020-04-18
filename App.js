@@ -13,7 +13,7 @@ export default class App extends React.Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Search Movies">
+        <Stack.Navigator initialRouteName="Search Movies" mode ="modal" headerMode="none">
           <Stack.Screen name="Search Movies" component={SearchScreen} />
           <Stack.Screen name="Details" component={DetailsScreen} />
         </Stack.Navigator>

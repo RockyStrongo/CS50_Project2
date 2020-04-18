@@ -1,36 +1,55 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image} from 'react-native';
-
-
+import { StyleSheet, Text, View, Image, Button} from 'react-native';
 
 export class DetailsScreen extends React.Component {
 
+dataarray = this.props.route.params.dataarray;
+dataindex = this.props.route.params.thisindex;
+
+state = {
+  currentindex: this.dataindex,
+  nextbuttondisabled: false,
+  nextbuttondisabled: false,
+};
+
+nextbutton = () => {
+      this.setState(prevState => ({currentindex: prevState.currentindex + 1}))
+}
+
+prevbutton = () => {
+    this.setState(prevState => ({currentindex: prevState.currentindex - 1}))
+  }
 
   render(){
-    const { movietitle } = this.props.route.params;
-    const { movieyear } = this.props.route.params;
-    const { movieimdbID } = this.props.route.params;
-    const { moviePoster } = this.props.route.params;
+
 
     return(
       <View>
-      <Text>Title: {movietitle+"\n"}
-      Year: {movieyear+"\n"}
+      <Text style={styles.detailtext}>
+      Title: {this.dataarray[this.state.currentindex].Title+"\n"}
+      Year: {this.dataarray[this.state.currentindex].Year+"\n"}
       Poster:
       </Text>
       <Image
         style={styles.poster}
         source={{
-          uri: moviePoster,
+          uri: this.dataarray[this.state.currentindex].Poster,
         }}
       />
+      <Button title="Previous" disabled={this.state.prevbuttondisabled} onPress={this.prevbutton}/>
+      <Button title="Next" disabled={this.state.nextbuttondisabled} onPress={this.nextbutton}/>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  detailtext: {
+    fontSize: 20,
+    padding: 10,
+  },
   poster: {
+    marginLeft : 10,
     width: 300,
     height: 300,
   },

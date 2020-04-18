@@ -9,7 +9,9 @@ touchmovie = () =>{
             movietitle: this.props.item.Title,
             movieyear: this.props.item.Year,
             movieimdbID: this.props.item.imdbID,
-            moviePoster: this.props.item.Poster
+            moviePoster: this.props.item.Poster,
+            dataarray: this.props.dataarray,
+            thisindex: this.props.thisindex
           })
 }
 

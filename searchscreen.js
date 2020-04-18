@@ -50,8 +50,8 @@ searchMovies = async () => {
         <FlatList
           data={this.state.data}
           keyExtractor={ (item, index) => index.toString() }
-          renderItem={({ item }) =>
-            <FlatListItem navigation={this.props.navigation} item={item}/>}
+          renderItem={({ item, index }) =>
+            <FlatListItem navigation={this.props.navigation} item={item} thisindex={index} dataarray={this.state.data}/>}
         />
 
       </View>
