@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, FlatList, TextInput, Button, TouchableOpacity} 
 import {SearchScreen}  from './searchscreen.js'
 import {DetailsScreen}  from './DetailsScreen.js'
 import {SigninScreen}  from './SigninScreen.js'
+import {SignupScreen}  from './SignupScreen.js'
 import APIKeys  from './APIkeys.js'
 
 import * as firebase from 'firebase';
@@ -24,17 +25,6 @@ state={
   userissignedin: null,
 }
 
-
-checkusersignin = () => {
-  if (firebase.auth().currentUser) {
-      // User is signed in.
-      this.setState({ userissignedin: true });
-    } else {
-      // No user is signed in.
-      this.setState({ userissignedin: false });
-    }
-}
-
 componentDidMount(){
   firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -43,7 +33,6 @@ componentDidMount(){
           this.setState({ userissignedin: false });
         }
   });
-
 }
 
   render() {
@@ -62,38 +51,14 @@ componentDidMount(){
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
-        <Stack.Screen name="Signin">
-        {props => <SigninScreen {...props} handlestate={this.checkusersignin} />}
-        </Stack.Screen>
-        <Stack.Screen name="Signup">
-        {props => <SignupScreen {...props} handlestate={this.checkusersignin} />}
-        </Stack.Screen>
+        <Stack.Screen name="Signin" component={SigninScreen} />
+        <Stack.Screen name="Signup" component={SignupScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 } else {
   return ( null )
 }
-    /*
-    if(this.state.userisloggedin == false){
-      return (
-        <NavigationContainer>
-          <Stack.Navigator headerMode="none">
-            <Stack.Screen name="Signin" component={SigninScreen} />
-            <Stack.Screen name="Signup" component={SignupScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      );
-    } else {
-      return (
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Search Movies" mode ="modal" headerMode="none">
-            <Stack.Screen name="Search Movies" component={SearchScreen} />
-            <Stack.Screen name="Details" component={DetailsScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      );
-    }
-    */
-  }
+}
+
 }

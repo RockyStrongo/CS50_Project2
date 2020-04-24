@@ -37,7 +37,9 @@ signout = () => {
   firebase.auth().signOut().then(function() {
 
 }).catch(function(error) {
-  alert("error")
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  alert(errorMessage)
 });
 
 }

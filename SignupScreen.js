@@ -15,10 +15,8 @@ getHandler = key => val => {
 }
 
 createnewuser = () => {
-  let handlestate =   this.props.handlestate
   firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(function(user) {
-      var user = firebase.auth().currentUser;
-      handlestate()
+
   }, function(error) {
       // Handle Errors here.
       var errorCode = error.code;

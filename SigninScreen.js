@@ -18,11 +18,10 @@ gotosignup = () => {
 }
 
 loginuser = () => {
-  let handlestate =   this.props.handlestate
   let email= this.state.email.trim()
   let password= this.state.password.trim()
   firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
-    handlestate()
+
     }, function(error) {
       // Handle Errors here.
       var errorCode = error.code;
