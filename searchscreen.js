@@ -1,12 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, Button, TouchableOpacity} from 'react-native';
 import {FlatListItem} from './FlatListItem.js'
+import * as firebase from 'firebase';
+
 
 export class SearchScreen extends React.Component {
 
   state = {
   searchstring: '',
   data: [],
+  pagenumber: 1,
 };
 
 getHandler = key => val => {
@@ -26,14 +29,23 @@ searchMovies = async () => {
   if(json.Response == 'False'){
     alert(json.Error)
   } else {
-      this.setState({ data: json.Search });
-  }
+    this.setState({ data: json.Search });
+    }
 };
 
+signout = () => {
+  firebase.auth().signOut().then(function() {
+
+}).catch(function(error) {
+  alert("error")
+});
+
+}
 
   render() {
     return (
       <View style={styles.container}>
+      <Text style="padding:10">Connected as: {firebase.auth().currentUser.email}</Text>
       <TextInput
       style={styles.input}
       //keyboardType = 'web-search'
@@ -53,7 +65,7 @@ searchMovies = async () => {
           renderItem={({ item, index }) =>
             <FlatListItem navigation={this.props.navigation} item={item} thisindex={index} dataarray={this.state.data}/>}
         />
-
+        <Button title="Sign out" onPress={this.signout}></Button>
       </View>
     );
   }

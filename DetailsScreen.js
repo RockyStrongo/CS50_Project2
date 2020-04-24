@@ -12,17 +12,36 @@ state = {
   nextbuttondisabled: false,
 };
 
+componentDidMount(){
+  if(this.state.currentindex == this.dataarray.length-1){
+    this.setState(prevState => ({nextbuttondisabled: true}))
+  }
+  if(this.state.currentindex == 0){
+    this.setState(prevState => ({prevbuttondisabled: true}))
+  }
+}
+
 nextbutton = () => {
       this.setState(prevState => ({currentindex: prevState.currentindex + 1}))
+      if(this.state.currentindex+1 == this.dataarray.length-1){
+        this.setState(prevState => ({nextbuttondisabled: true}))
+      }
+      if(this.state.currentindex+1 != 0){
+        this.setState(prevState => ({prevbuttondisabled: false}))
+      }
 }
 
 prevbutton = () => {
     this.setState(prevState => ({currentindex: prevState.currentindex - 1}))
+    if(this.state.currentindex-1 == 0){
+      this.setState(prevState => ({prevbuttondisabled: true}))
+    }
+    if(this.state.currentindex-1 != this.dataarray.length-1){
+      this.setState(prevState => ({nextbuttondisabled: false}))
+    }
   }
 
-  render(){
-
-
+render(){
     return(
       <View>
       <Text style={styles.detailtext}>
