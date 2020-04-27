@@ -44,30 +44,43 @@ export class DetailsScreen extends React.Component {
     }
   };
 
+  closestack = () => {
+    this.props.navigation.goBack();
+  };
+
   render() {
     return (
       <View>
-        <Text style={styles.detailtext}>
-          Title: {this.dataarray[this.state.currentindex].Title + "\n"}
-          Year: {this.dataarray[this.state.currentindex].Year + "\n"}
-          Poster:
-        </Text>
-        <Image
-          style={styles.poster}
-          source={{
-            uri: this.dataarray[this.state.currentindex].Poster,
-          }}
-        />
-        <Button
-          title="Previous"
-          disabled={this.state.prevbuttondisabled}
-          onPress={this.prevbutton}
-        />
-        <Button
-          title="Next"
-          disabled={this.state.nextbuttondisabled}
-          onPress={this.nextbutton}
-        />
+        <View style={{ alignItems: "flex-end", marginRight: 5 }}>
+          <Button title="x" onPress={this.closestack} />
+        </View>
+        <View style={{ alignItems: "center" }}>
+          <Text style={styles.detailtext}>
+            {this.dataarray[this.state.currentindex].Title}
+          </Text>
+          <Text style={styles.detailtext}>
+            {this.dataarray[this.state.currentindex].Year}
+          </Text>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Button
+              style={{ fontSize: 50 }}
+              title="<"
+              disabled={this.state.prevbuttondisabled}
+              onPress={this.prevbutton}
+            />
+            <Image
+              style={styles.poster}
+              source={{
+                uri: this.dataarray[this.state.currentindex].Poster,
+              }}
+            />
+            <Button
+              title=">"
+              disabled={this.state.nextbuttondisabled}
+              onPress={this.nextbutton}
+            />
+          </View>
+        </View>
       </View>
     );
   }
@@ -76,10 +89,10 @@ export class DetailsScreen extends React.Component {
 const styles = StyleSheet.create({
   detailtext: {
     fontSize: 20,
-    padding: 10,
+    paddingTop: 10,
   },
   poster: {
-    marginLeft: 10,
+    margin: 10,
     width: 300,
     height: 300,
   },
