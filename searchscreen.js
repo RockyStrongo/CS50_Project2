@@ -52,8 +52,6 @@ export class SearchScreen extends React.Component {
       });
   };
 
-  image = { uri: "assetsgreen-dust-and-scratches.png" };
-
   render() {
     return (
       <View style={styles.container}>
@@ -67,13 +65,7 @@ export class SearchScreen extends React.Component {
           onChangeText={this.getHandler("searchstring")}
           placeholder="Search"
         ></TextInput>
-        <Button
-          titleStyle={{
-            fontSize: 50,
-          }}
-          title="Search"
-          onPress={this.searchMovies}
-        ></Button>
+        <Button title="Search" onPress={this.searchMovies}></Button>
         <FlatList
           data={this.state.data}
           keyExtractor={(item, index) => index.toString()}

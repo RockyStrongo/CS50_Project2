@@ -50,20 +50,19 @@ export class DetailsScreen extends React.Component {
 
   render() {
     return (
-      <View>
-        <View style={{ alignItems: "flex-end", marginRight: 5 }}>
+      <View style={styles.container}>
+        <View style={styles.topbuttonview}>
           <Button title="x" onPress={this.closestack} />
         </View>
-        <View style={{ alignItems: "center" }}>
+        <View style={styles.centeredview}>
           <Text style={styles.detailtext}>
             {this.dataarray[this.state.currentindex].Title}
           </Text>
           <Text style={styles.detailtext}>
             {this.dataarray[this.state.currentindex].Year}
           </Text>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View style={styles.rowforbuttonsandposter}>
             <Button
-              style={{ fontSize: 50 }}
               title="<"
               disabled={this.state.prevbuttondisabled}
               onPress={this.prevbutton}
@@ -87,6 +86,21 @@ export class DetailsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    //backgroundColor: "#282a36",
+  },
+  topbuttonview: {
+    alignItems: "flex-end",
+    marginRight: 5,
+  },
+  centeredview: {
+    alignItems: "center",
+  },
+  rowforbuttonsandposter: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   detailtext: {
     fontSize: 20,
     paddingTop: 10,
