@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { SearchScreen } from "./searchscreen.js";
 import { ScreenTwo } from "./ScreenTwo.js";
 import { DetailsScreen } from "./DetailsScreen.js";
+import { SmallModalScreen } from "./SmallModalScreen.js";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -14,11 +15,7 @@ export class MainStackNavigator extends React.Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Search Movies"
-          mode="modal"
-          headerMode="none"
-        >
+        <Stack.Navigator mode="modal" headerMode="none">
           <Stack.Screen name="Tabs" component={TopTabScreens} />
           <Stack.Screen
             name="Details"
@@ -28,6 +25,15 @@ export class MainStackNavigator extends React.Component {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20,
                 backgroundColor: "steelblue",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Modal"
+            component={SmallModalScreen}
+            options={{
+              cardStyle: {
+                backgroundColor: "transparent",
               },
             }}
           />

@@ -52,6 +52,10 @@ export class SearchScreen extends React.Component {
       });
   };
 
+  openmodal = () => {
+    this.props.navigation.navigate("Modal");
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -65,7 +69,9 @@ export class SearchScreen extends React.Component {
           onChangeText={this.getHandler("searchstring")}
           placeholder="Search"
         ></TextInput>
-        <Button title="Search" onPress={this.searchMovies}></Button>
+        <TouchableOpacity onPress={this.searchMovies}>
+          <Text style={{ fontSize: 20, color: "blue" }}>Search</Text>
+        </TouchableOpacity>
         <FlatList
           data={this.state.data}
           keyExtractor={(item, index) => index.toString()}
@@ -78,6 +84,7 @@ export class SearchScreen extends React.Component {
             />
           )}
         />
+        <Button title="Open Modal" onPress={this.openmodal}></Button>
         <Button title="Sign out" onPress={this.signout}></Button>
       </View>
     );

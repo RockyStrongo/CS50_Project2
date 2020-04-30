@@ -92,7 +92,8 @@ const styles = StyleSheet.create({
   },
   topbuttonview: {
     alignItems: "flex-end",
-    marginRight: 5,
+    marginRight: 10,
+    marginTop: 10,
   },
   centeredview: {
     alignItems: "center",
