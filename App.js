@@ -45,7 +45,7 @@ export default class App extends React.Component {
   render() {
     if (this.state.userissignedin == true) {
       // User is signed in.
-      return <MainStackNavigator />;
+      return <MainStackNavigator style={{ marginTop: 20 }} />;
     } else if (this.state.userissignedin == false) {
       // No user is signed in.
       return (

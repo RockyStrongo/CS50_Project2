@@ -51,29 +51,6 @@ export class DetailsScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <ViewPager
-          style={styles.viewPager}
-          initialPage={this.state.currentindex}
-        >
-          {this.dataarray.map((movie, key) => (
-            <View key={key}>
-              <View style={styles.centeredview}>
-                <Text style={styles.detailtext}>{movie.Title}</Text>
-                <Text style={styles.detailtext}>{movie.Year}</Text>
-                <Image
-                  style={styles.poster}
-                  source={{
-                    uri: movie.Poster,
-                  }}
-                />
-              </View>
-            </View>
-          ))}
-        </ViewPager>
-      </View>
-
-      /*
       <View style={styles.container}>
         <View style={styles.topbuttonview}>
           <Button title="x" onPress={this.closestack} />
@@ -105,7 +82,6 @@ export class DetailsScreen extends React.Component {
           </View>
         </View>
       </View>
-*/
     );
   }
 }
@@ -131,13 +107,5 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 270,
     height: 400,
-  },
-  viewPager: {
-    flex: 1,
-    marginTop: 30,
-  },
-  page: {
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
