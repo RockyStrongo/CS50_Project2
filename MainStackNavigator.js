@@ -24,7 +24,6 @@ export class MainStackNavigator extends React.Component {
               cardStyle: {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20,
-                backgroundColor: "steelblue",
               },
             }}
           />

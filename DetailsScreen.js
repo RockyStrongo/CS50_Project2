@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Button } from "react-native";
 import ViewPager from "@react-native-community/viewpager";
+import { LinearGradient } from "expo-linear-gradient";
 
 export class DetailsScreen extends React.Component {
   dataarray = this.props.route.params.dataarray;
@@ -8,41 +9,6 @@ export class DetailsScreen extends React.Component {
 
   state = {
     currentindex: this.dataindex,
-    nextbuttondisabled: false,
-    nextbuttondisabled: false,
-  };
-
-  componentDidMount() {
-    if (this.state.currentindex == this.dataarray.length - 1) {
-      this.setState((prevState) => ({ nextbuttondisabled: true }));
-    }
-    if (this.state.currentindex == 0) {
-      this.setState((prevState) => ({ prevbuttondisabled: true }));
-    }
-  }
-
-  nextbutton = () => {
-    this.setState((prevState) => ({
-      currentindex: prevState.currentindex + 1,
-    }));
-    if (this.state.currentindex + 1 == this.dataarray.length - 1) {
-      this.setState((prevState) => ({ nextbuttondisabled: true }));
-    }
-    if (this.state.currentindex + 1 != 0) {
-      this.setState((prevState) => ({ prevbuttondisabled: false }));
-    }
-  };
-
-  prevbutton = () => {
-    this.setState((prevState) => ({
-      currentindex: prevState.currentindex - 1,
-    }));
-    if (this.state.currentindex - 1 == 0) {
-      this.setState((prevState) => ({ prevbuttondisabled: true }));
-    }
-    if (this.state.currentindex - 1 != this.dataarray.length - 1) {
-      this.setState((prevState) => ({ nextbuttondisabled: false }));
-    }
   };
 
   closestack = () => {
@@ -52,75 +18,43 @@ export class DetailsScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <ViewPager
-          style={styles.viewPager}
-          initialPage={this.state.currentindex}
+        <LinearGradient
+          colors={["#134E5E", "#71B280"]}
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 0,
+            height: "100%",
+          }}
         >
-          {this.dataarray.map((movie, key) => (
-            <View key={key}>
-              <View style={styles.centeredview}>
-                <Text style={styles.detailtext}>{movie.Title}</Text>
-                <Text style={styles.detailtext}>{movie.Year}</Text>
-                <Image
-                  style={styles.poster}
-                  source={{
-                    uri: movie.Poster,
-                  }}
-                />
+          <ViewPager
+            style={styles.viewPager}
+            initialPage={this.state.currentindex}
+          >
+            {this.dataarray.map((movie, key) => (
+              <View key={key}>
+                <View style={styles.centeredview}>
+                  <Text style={styles.detailtext}>{movie.Title}</Text>
+                  <Text style={styles.detailtext}>{movie.Year}</Text>
+                  <Image
+                    style={styles.poster}
+                    source={{
+                      uri: movie.Poster,
+                    }}
+                  />
+                </View>
               </View>
-            </View>
-          ))}
-        </ViewPager>
+            ))}
+          </ViewPager>
+        </LinearGradient>
       </View>
-
-      /*
-      <View style={styles.container}>
-        <View style={styles.topbuttonview}>
-          <Button title="x" onPress={this.closestack} />
-        </View>
-        <View style={styles.centeredview}>
-          <Text style={styles.detailtext}>
-            {this.dataarray[this.state.currentindex].Title}
-          </Text>
-          <Text style={styles.detailtext}>
-            {this.dataarray[this.state.currentindex].Year}
-          </Text>
-          <View style={styles.rowforbuttonsandposter}>
-            <Button
-              title="<"
-              disabled={this.state.prevbuttondisabled}
-              onPress={this.prevbutton}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: this.dataarray[this.state.currentindex].Poster,
-              }}
-            />
-            <Button
-              title=">"
-              disabled={this.state.nextbuttondisabled}
-              onPress={this.nextbutton}
-            />
-          </View>
-        </View>
-      </View>
-*/
     );
   }
 }
 
 const styles = StyleSheet.create({
-  topbuttonview: {
-    alignItems: "flex-end",
-    marginRight: 10,
-    marginTop: 10,
-  },
   centeredview: {
-    alignItems: "center",
-  },
-  rowforbuttonsandposter: {
-    flexDirection: "row",
     alignItems: "center",
   },
   detailtext: {

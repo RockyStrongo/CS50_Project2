@@ -23,7 +23,8 @@
     "react-native-screens": "~2.2.0",
     "react-native-tab-view": "^2.14.0",
     "react-native-web": "~0.11.7",
-    "@react-native-community/viewpager": "3.3.0"
+    "@react-native-community/viewpager": "3.3.0",
+    "expo-linear-gradient": "~8.1.0"
   },
   "devDependencies": {
     "babel-preset-expo": "~8.1.0",
