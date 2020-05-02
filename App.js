@@ -14,7 +14,7 @@ import { DetailsScreen } from "./DetailsScreen.js";
 import { SigninScreen } from "./SigninScreen.js";
 import { SignupScreen } from "./SignupScreen.js";
 import APIKeys from "./APIkeys.js";
-import { MainStackNavigator } from "./MainStackNavigator.js";
+import { DrawerNavigator } from "./DrawerNavigator.js";
 
 import * as firebase from "firebase";
 // Your web app's Firebase configuration
@@ -45,7 +45,7 @@ export default class App extends React.Component {
   render() {
     if (this.state.userissignedin == true) {
       // User is signed in.
-      return <MainStackNavigator />;
+      return <DrawerNavigator />;
     } else if (this.state.userissignedin == false) {
       // No user is signed in.
       return (

@@ -40,28 +40,17 @@ export class SearchScreen extends React.Component {
     }
   };
 
-  signout = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(function () {})
-      .catch(function (error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert(errorMessage);
-      });
-  };
-
   openmodal = () => {
     this.props.navigation.navigate("Modal");
+  };
+
+  opendrawer = () => {
+    this.props.navigation.toggleDrawer();
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style="padding:10">
-          Connected as: {firebase.auth().currentUser.email}
-        </Text>
         <TextInput
           style={styles.input}
           //keyboardType = 'web-search'
@@ -85,7 +74,7 @@ export class SearchScreen extends React.Component {
           )}
         />
         <Button title="Open Modal" onPress={this.openmodal}></Button>
-        <Button title="Sign out" onPress={this.signout}></Button>
+        <Button title="..." onPress={this.opendrawer}></Button>
       </View>
     );
   }

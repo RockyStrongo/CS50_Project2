@@ -14,30 +14,28 @@ const Stack = createStackNavigator();
 export class MainStackNavigator extends React.Component {
   render() {
     return (
-      <NavigationContainer>
-        <Stack.Navigator mode="modal" headerMode="none">
-          <Stack.Screen name="Tabs" component={TopTabScreens} />
-          <Stack.Screen
-            name="Details"
-            component={DetailsScreen}
-            options={{
-              cardStyle: {
-                borderTopLeftRadius: 20,
-                borderTopRightRadius: 20,
-              },
-            }}
-          />
-          <Stack.Screen
-            name="Modal"
-            component={SmallModalScreen}
-            options={{
-              cardStyle: {
-                backgroundColor: "transparent",
-              },
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Stack.Navigator mode="modal" headerMode="none">
+        <Stack.Screen name="Tabs" component={TopTabScreens} />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={{
+            cardStyle: {
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Modal"
+          component={SmallModalScreen}
+          options={{
+            cardStyle: {
+              backgroundColor: "transparent",
+            },
+          }}
+        />
+      </Stack.Navigator>
     );
   }
 }
