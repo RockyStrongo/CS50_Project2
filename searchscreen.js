@@ -81,7 +81,22 @@ export class SearchScreen extends React.Component {
             />
           )}
         />
-        <Button title="Open Modal" onPress={this.openmodal}></Button>
+        <TouchableOpacity
+          onPress={this.openmodal}
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            width: 70,
+            position: "absolute",
+            bottom: 30,
+            right: 30,
+            height: 70,
+            backgroundColor: "steelblue",
+            borderRadius: 100,
+          }}
+        >
+          <Text>+</Text>
+        </TouchableOpacity>
         <Button title="..." onPress={this.opendrawer}></Button>
       </View>
     );
