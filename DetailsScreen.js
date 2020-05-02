@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
+import { StyleSheet, Text, View, Image, Button, StatusBar } from "react-native";
 import ViewPager from "@react-native-community/viewpager";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -18,6 +18,7 @@ export class DetailsScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <StatusBar hidden="true" animated="true" showHideTransition="slide" />
         <LinearGradient
           colors={["#134E5E", "#71B280"]}
           style={{

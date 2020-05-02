@@ -1,4 +1,6 @@
 import React from "react";
+import Constants from "expo-constants";
+
 import { View } from "react-native";
 import { SearchScreen } from "./searchscreen.js";
 import { ScreenTwo } from "./ScreenTwo.js";
@@ -45,7 +47,13 @@ const Tab = createMaterialTopTabNavigator();
 export class TopTabScreens extends React.Component {
   render() {
     return (
-      <Tab.Navigator>
+      <Tab.Navigator
+        tabBarOptions={{
+          style: {
+            marginTop: Constants.statusBarHeight + 5,
+          },
+        }}
+      >
         <Tab.Screen name="Search Movies" component={SearchScreen} />
         <Tab.Screen name="ScreenTwo" component={ScreenTwo} />
       </Tab.Navigator>

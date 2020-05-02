@@ -22,6 +22,7 @@ export class DrawerNavigator extends React.Component {
     return (
       <NavigationContainer>
         <Drawer.Navigator
+          hideStatusBar="true"
           drawerContent={(props) => <DrawerScreen {...props} />}
         >
           <Drawer.Screen name="MainStack" component={MainStackNavigator} />

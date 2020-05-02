@@ -8,6 +8,7 @@ import {
   Button,
   TouchableOpacity,
   ImageBackground,
+  StatusBar,
 } from "react-native";
 import { FlatListItem } from "./FlatListItem.js";
 import * as firebase from "firebase";
@@ -51,12 +52,19 @@ export class SearchScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar
+          barStyle="dark-content"
+          animated="true"
+          hidden="false"
+          showHideTransition="slide"
+        />
         <TextInput
           style={styles.input}
-          //keyboardType = 'web-search'
+          returnKeyType="search"
           value={this.state.searchstring}
           onChangeText={this.getHandler("searchstring")}
           placeholder="Search"
+          onSubmitEditing={this.searchMovies}
         ></TextInput>
         <TouchableOpacity onPress={this.searchMovies}>
           <Text style={{ fontSize: 20, color: "blue" }}>Search</Text>
