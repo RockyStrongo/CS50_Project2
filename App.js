@@ -1,23 +1,13 @@
 import React from "react";
 import Constants from "expo-constants";
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from "react-native";
-import { SearchScreen } from "./searchscreen.js";
-import { DetailsScreen } from "./DetailsScreen.js";
+import { View } from "react-native";
+
 import { SigninScreen } from "./SigninScreen.js";
 import { SignupScreen } from "./SignupScreen.js";
 import APIKeys from "./APIkeys.js";
 import { DrawerNavigator } from "./DrawerNavigator.js";
 
 import * as firebase from "firebase";
-// Your web app's Firebase configuration
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

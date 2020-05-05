@@ -24,9 +24,31 @@ export class SearchScreen extends React.Component {
     this.setState({ [key]: val });
   };
 
-  /*componentDidMount() {
-  this.fetchData();
-}*/
+  saveSearchHistory = (string) => {
+    var d = new Date();
+    var n = d.toJSON();
+
+    // Get a key for a new search.
+    var newSearchKey = firebase.database().ref().child("searchhistory").push()
+      .key;
+
+    firebase
+      .database()
+      .ref("searchhistory/" + firebase.auth().currentUser.uid)
+      .push(
+        {
+          searchstring: string,
+          datetime: n,
+        },
+        function (error) {
+          if (error) {
+            alert(error);
+          } else {
+            // Data saved successfully!
+          }
+        }
+      );
+  };
 
   searchMovies = async () => {
     var searchstring = this.state.searchstring;
@@ -38,6 +60,7 @@ export class SearchScreen extends React.Component {
       alert(json.Error);
     } else {
       this.setState({ data: json.Search });
+      this.saveSearchHistory(searchstring);
     }
   };
 

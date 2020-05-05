@@ -3,7 +3,7 @@ import Constants from "expo-constants";
 
 import { View } from "react-native";
 import { SearchScreen } from "./searchscreen.js";
-import { ScreenTwo } from "./ScreenTwo.js";
+import { SearchHistoryScreen } from "./SearchHistoryScreen.js";
 import { DetailsScreen } from "./DetailsScreen.js";
 import { SmallModalScreen } from "./SmallModalScreen.js";
 
@@ -55,7 +55,7 @@ export class TopTabScreens extends React.Component {
         }}
       >
         <Tab.Screen name="Search Movies" component={SearchScreen} />
-        <Tab.Screen name="ScreenTwo" component={ScreenTwo} />
+        <Tab.Screen name="Search History" component={SearchHistoryScreen} />
       </Tab.Navigator>
     );
   }
